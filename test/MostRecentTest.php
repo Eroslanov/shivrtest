@@ -5,20 +5,18 @@ namespace Tests;
 use PHPUnit\Framework\TestCase;
 use App\Cipher;
 
-class CipherTest extends TestCase
+class MostRecentTest extends TestCase
 {
-    
-    public function testCipherWithRussianTextAndPositiveKey(): void
+  public function testMostRecentWithRegularInput()
     {
-        $result = Cipher::cipher(text: 'абвгд', key: 1);
-        $this->assertEquals('бвгде', $result);
+        $result = MainClass::mostRecent('123 123 123 qq qq qq qq');
+        $this->assertEquals('qq', $result);
     }
 
-    
-    public function testCipherWithEnglishTextAndPositiveKey(): void
+    public function testMostRecentWithSingleWord()
     {
-        $result = Cipher::cipher(text: 'abcde', key: 2);
-        $this->assertEquals('cdefg', $result);
+        $result = MainClass::mostRecent('hello');
+        $this->assertEquals('hello', $result);
     }
 
     
